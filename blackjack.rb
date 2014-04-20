@@ -68,15 +68,24 @@ def keep_playing? my_score
 
 end
 
-def check_win hand_score
+# Step 4: add dealer
 
-  if hand_score < 21
-    puts "you win :)"
-  elsif hand_score == 21
-    puts "blackjack :D"
-  else
-    puts "sorry, loser :("
+def dealer
+
+  Array.new(2) { |i|  CARDS.sample }
+
+end
+
+def dealer_play d_hand
+
+  d_score = score d_hand
+
+  while d_score < 17
+    d_hand << hit
+    d_score = score d_hand
   end
+
+  return d_hand
 
 end
 
@@ -84,6 +93,8 @@ def game_play
 
   my_hand = player
   my_score = score my_hand
+  dealer_hand = dealer_play dealer
+  dealer_score = score dealer_hand
 
   output my_hand, my_score
 
@@ -93,7 +104,26 @@ def game_play
     output my_hand, my_score
   end 
 
-  return check_win my_score
+  return check_win my_score, dealer_score
+
+end
+
+def check_win player_score, dealer_score
+
+  if dealer_score > 21 or (dealer_score < 21 and player_score > dealer_score and player_score <= 21)
+    puts "you win :)"
+  elsif dealer_score == player_score
+    puts "tie!"
+  elsif player_score == 21
+    puts "blackjack :D"
+  elsif player_score > 21
+    puts "busted :("
+  else
+    puts "you lose :("
+  end
+  
+  puts player_score
+  puts dealer_score
 
 end
 
