@@ -1,0 +1,16 @@
+to_do.txt
+
+ask the player if they're sure if they ask to hit at 21 or bust
+
+refactor so a player having more than 1 hand doesn't ruin everything
+
+add limit to the number of decks
+
+add insurance (?)
+
+add tests
+
+fix/double check double down bet limit
+
+change dollars to chips
+

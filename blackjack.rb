@@ -44,9 +44,9 @@ end
 
 # Step 3: hit or stand
 
+def output my_hand, my_score, dealer_hand
 
-def output my_hand, my_score
-
+  puts "Dealer shows: #{dealer_hand[0]}"
   puts "Your hand: #{my_hand.join(', ')}"
   puts "Your score: #{my_score}"
 
@@ -96,7 +96,7 @@ def game_play
   dealer_hand = dealer_play dealer
   dealer_score = score dealer_hand
 
-  output my_hand, my_score
+  output my_hand, my_score, dealer_hand
 
   while keep_playing? my_score
     my_hand << hit
